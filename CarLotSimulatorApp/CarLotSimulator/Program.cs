@@ -6,7 +6,7 @@ namespace CarLotSimulator
     {
         static void Main(string[] args)
         {
-            //TODO
+            var lot = new CarLot();
 
             //Create a seperate class file called Car
             //Car shall have the following properties: Year, Make, Model, EngineNoise, HonkNoise, IsDriveable
@@ -17,6 +17,33 @@ namespace CarLotSimulator
             //Now that the Car class is created we can instanciate 3 new cars
             //Set the properties for each of the cars
             //Call each of the methods for each car
+            var HassansCar = new Car();
+            HassansCar.Make = "Subaru";
+            HassansCar.Model = "Impreza";
+            HassansCar.Year = 2018;
+            HassansCar.EngineNoise = "Zoom";
+            HassansCar.HonkNoise = "BOP";
+            HassansCar.isDrivable = true;
+
+            lot.Cars.Add(HassansCar);
+
+            var MomsCar = new Car()
+            {
+                Year = 2017,
+                Make = "Lexus",
+                Model = "NX",
+                EngineNoise = "eowwwww",
+                HonkNoise = "Beep",
+                isDrivable = true
+            };
+            lot.Cars.Add(MomsCar);
+
+            var SarasCar = new Car(2014,"chevy","Cruze","Brr","HONKKK",true);
+            lot.Cars.Add(SarasCar);
+
+            HassansCar.MakeEngineNoise(HassansCar.EngineNoise);
+            MomsCar.MakeEngineNoise(MomsCar.EngineNoise);
+            SarasCar.MakeEngineNoise(SarasCar.EngineNoise);
 
             //*************BONUS*************//
 
@@ -28,6 +55,10 @@ namespace CarLotSimulator
             //It should have at least one property: a List of cars
             //Instanciate the a Carlot at the beginning of the program and as you create a car add the car to the list.
             //At the end iterate through the list printing each of car's Year, Make, and Model to the console
+            foreach (var car in lot.Cars)
+            {
+                Console.WriteLine($"Year: {car.Year} Make: {car.Make} Model: {car.Model}");
+            }
         }
     }
 }
